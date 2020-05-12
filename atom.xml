@@ -1,0 +1,592 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Abel&#39;s Blog</title>
+  
+  <subtitle>找一个蚁群，做只蚂蚁</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://blog.abel-zhang.com/"/>
+  <updated>2020-05-12T08:23:22.000Z</updated>
+  <id>https://blog.abel-zhang.com/</id>
+  
+  <author>
+    <name>Abel Zhang</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Master your Java Environment with jenv</title>
+    <link href="https://blog.abel-zhang.com/2020/02/18/java-jenv/"/>
+    <id>https://blog.abel-zhang.com/2020/02/18/java-jenv/</id>
+    <published>2020-02-18T09:27:02.000Z</published>
+    <updated>2020-05-12T08:23:22.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;a href=&quot;https://github.com/jenv/jenv#readme&quot; target=&quot;_blank&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="器(tool)" scheme="https://blog.abel-zhang.com/categories/tool/"/>
+    
+    
+      <category term="java version" scheme="https://blog.abel-zhang.com/tags/java-version/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mac上制作OS X U盘启动</title>
+    <link href="https://blog.abel-zhang.com/2019/10/16/mac-create-boot-drive/"/>
+    <id>https://blog.abel-zhang.com/2019/10/16/mac-create-boot-drive/</id>
+    <published>2019-10-16T06:02:16.000Z</published>
+    <updated>2020-05-12T08:23:22.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;制作-U-盘启动盘&quot;&gt;&lt;a href=&quot;#制作-U-盘启动盘&quot; class=&quot;headerlink&quot; title=&quot;制作 U 盘启动盘&quot;&gt;&lt;/a&gt;制作 U 盘启动盘&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;安装软件&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="器(tool)" scheme="https://blog.abel-zhang.com/categories/tool/"/>
+    
+    
+      <category term="macos" scheme="https://blog.abel-zhang.com/tags/macos/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iPad使用手册</title>
+    <link href="https://blog.abel-zhang.com/2019/10/15/ipad-usage/"/>
+    <id>https://blog.abel-zhang.com/2019/10/15/ipad-usage/</id>
+    <published>2019-10-15T05:15:59.000Z</published>
+    <updated>2020-05-12T08:23:22.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;iPad-基本型号&quot;&gt;&lt;a href=&quot;#iPad-基本型号&quot; class=&quot;headerlink&quot; title=&quot;iPad 基本型号&quot;&gt;&lt;/a&gt;iPad 基本型号&lt;/h2&gt;&lt;p&gt;&lt;img
+        
+      
+    
+    </summary>
+    
+      <category term="器(tool)" scheme="https://blog.abel-zhang.com/categories/tool/"/>
+    
+    
+      <category term="ipad" scheme="https://blog.abel-zhang.com/tags/ipad/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>青城山、都江堰一日游</title>
+    <link href="https://blog.abel-zhang.com/2019/08/25/journy-qingcheng-mountain/"/>
+    <id>https://blog.abel-zhang.com/2019/08/25/journy-qingcheng-mountain/</id>
+    <published>2019-08-25T03:11:42.000Z</published>
+    <updated>2020-05-12T08:23:22.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;9 月初，成都出发自驾，青城山&amp;amp;都江堰一日游。计划是这样，试试再说。&lt;/p&gt;
+&lt;h2 id=&quot;景点&quot;&gt;&lt;a href=&quot;#景点&quot; class=&quot;headerlink&quot; title=&quot;景点&quot;&gt;&lt;/a&gt;景点&lt;/h2&gt;&lt;p&gt;&lt;code&gt;问道青城山
+        
+      
+    
+    </summary>
+    
+      <category term="杂(others)" scheme="https://blog.abel-zhang.com/categories/others/"/>
+    
+    
+      <category term="journey" scheme="https://blog.abel-zhang.com/tags/journey/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>峨眉山乐山两日游</title>
+    <link href="https://blog.abel-zhang.com/2019/08/25/journy-le-emei-mountain/"/>
+    <id>https://blog.abel-zhang.com/2019/08/25/journy-le-emei-mountain/</id>
+    <published>2019-08-25T00:15:09.000Z</published>
+    <updated>2020-05-12T08:23:22.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;9 月初，成都出发自驾，峨眉山乐山两日游，观日落日出。&lt;/p&gt;
+&lt;h2 id=&quot;景点&quot;&gt;&lt;a href=&quot;#景点&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="杂(others)" scheme="https://blog.abel-zhang.com/categories/others/"/>
+    
+    
+      <category term="journey" scheme="https://blog.abel-zhang.com/tags/journey/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>牢骚之地</title>
+    <link href="https://blog.abel-zhang.com/2019/08/20/work-complain/"/>
+    <id>https://blog.abel-zhang.com/2019/08/20/work-complain/</id>
+    <published>2019-08-20T07:40:25.000Z</published>
+    <updated>2020-05-12T08:23:22.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;有人说 blog
+        
+      
+    
+    </summary>
+    
+      <category term="杂(others)" scheme="https://blog.abel-zhang.com/categories/others/"/>
+    
+    
+      <category term="thinking" scheme="https://blog.abel-zhang.com/tags/thinking/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>团队合作</title>
+    <link href="https://blog.abel-zhang.com/2019/08/16/project-teamwork/"/>
+    <id>https://blog.abel-zhang.com/2019/08/16/project-teamwork/</id>
+    <published>2019-08-16T12:18:15.000Z</published>
+    <updated>2020-05-12T08:23:22.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;ul&gt;
+&lt;li&gt;专业：保持自己是专业的，思考如何做更专业。&lt;/li&gt;
+&lt;li&gt;角色：清楚自己的角色，每人角色更像自己的角色。&lt;/li&gt;
+&lt;li&gt;利人：自己输出的内容不是方便自己，而且方便他人，方便使用你输出的人。也是个人专业度的一种体现。&lt;/li&gt;
+&lt;li&gt;信任：研究有效沟通只
+        
+      
+    
+    </summary>
+    
+      <category term="杂(others)" scheme="https://blog.abel-zhang.com/categories/others/"/>
+    
+    
+      <category term="thinking" scheme="https://blog.abel-zhang.com/tags/thinking/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>生活故事会</title>
+    <link href="https://blog.abel-zhang.com/2019/08/16/living-stories/"/>
+    <id>https://blog.abel-zhang.com/2019/08/16/living-stories/</id>
+    <published>2019-08-16T08:03:11.000Z</published>
+    <updated>2020-05-12T08:23:22.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;锅糊了&quot;&gt;&lt;a href=&quot;#锅糊了&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="杂(others)" scheme="https://blog.abel-zhang.com/categories/others/"/>
+    
+    
+      <category term="story" scheme="https://blog.abel-zhang.com/tags/story/"/>
+    
+      <category term="thinking" scheme="https://blog.abel-zhang.com/tags/thinking/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Git Repository Migration</title>
+    <link href="https://blog.abel-zhang.com/2019/07/17/git-repo-migration/"/>
+    <id>https://blog.abel-zhang.com/2019/07/17/git-repo-migration/</id>
+    <published>2019-07-17T05:07:55.000Z</published>
+    <updated>2020-05-12T08:23:22.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Copy the entire repository&lt;/p&gt;
+&lt;figure class=&quot;highlight sh&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span
+        
+      
+    
+    </summary>
+    
+      <category term="法(skill)" scheme="https://blog.abel-zhang.com/categories/skill/"/>
+    
+    
+      <category term="git" scheme="https://blog.abel-zhang.com/tags/git/"/>
+    
+      <category term="github" scheme="https://blog.abel-zhang.com/tags/github/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Git</title>
+    <link href="https://blog.abel-zhang.com/2019/06/10/git/"/>
+    <id>https://blog.abel-zhang.com/2019/06/10/git/</id>
+    <published>2019-06-10T14:38:43.000Z</published>
+    <updated>2020-05-12T08:23:22.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;毋庸置疑，Git 是目前最流行、最好用的版本控制系统，在它的基础上，催生出了 GitHub 和 GitLab 两个当前最流行的代码托管平台。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/uploads/2019-06-12-07-57-14.png&quot; alt=&quot;git
+        
+      
+    
+    </summary>
+    
+      <category term="技(tech)" scheme="https://blog.abel-zhang.com/categories/tech/"/>
+    
+    
+      <category term="git" scheme="https://blog.abel-zhang.com/tags/git/"/>
+    
+      <category term="scm" scheme="https://blog.abel-zhang.com/tags/scm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Code Formatter</title>
+    <link href="https://blog.abel-zhang.com/2019/05/10/code-formatter/"/>
+    <id>https://blog.abel-zhang.com/2019/05/10/code-formatter/</id>
+    <published>2019-05-10T08:06:50.000Z</published>
+    <updated>2020-05-12T08:23:22.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;Prettier&quot;&gt;&lt;a href=&quot;#Prettier&quot; class=&quot;headerlink&quot; title=&quot;Prettier&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://prettier.io/docs/en/index.html&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="器(tool)" scheme="https://blog.abel-zhang.com/categories/tool/"/>
+    
+    
+      <category term="prettier" scheme="https://blog.abel-zhang.com/tags/prettier/"/>
+    
+      <category term="editconfig" scheme="https://blog.abel-zhang.com/tags/editconfig/"/>
+    
+      <category term="vscode" scheme="https://blog.abel-zhang.com/tags/vscode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Git Command</title>
+    <link href="https://blog.abel-zhang.com/2019/02/22/git-command/"/>
+    <id>https://blog.abel-zhang.com/2019/02/22/git-command/</id>
+    <published>2019-02-22T12:23:25.000Z</published>
+    <updated>2020-05-12T08:23:22.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;Collections&quot;&gt;&lt;a href=&quot;#Collections&quot; class=&quot;headerlink&quot; title=&quot;Collections&quot;&gt;&lt;/a&gt;Collections&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Remove all files to
+        
+      
+    
+    </summary>
+    
+      <category term="技(tech)" scheme="https://blog.abel-zhang.com/categories/tech/"/>
+    
+    
+      <category term="git" scheme="https://blog.abel-zhang.com/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>gh-pages Deployment</title>
+    <link href="https://blog.abel-zhang.com/2019/02/21/gh-pages-deployment/"/>
+    <id>https://blog.abel-zhang.com/2019/02/21/gh-pages-deployment/</id>
+    <published>2019-02-21T11:52:10.000Z</published>
+    <updated>2020-05-12T08:23:22.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;Deploying-a-subfolder-to-GitHub-Pages&quot;&gt;&lt;a href=&quot;#Deploying-a-subfolder-to-GitHub-Pages&quot; class=&quot;headerlink&quot; title=&quot;Deploying a
+        
+      
+    
+    </summary>
+    
+      <category term="法(skill)" scheme="https://blog.abel-zhang.com/categories/skill/"/>
+    
+    
+      <category term="gh-pages" scheme="https://blog.abel-zhang.com/tags/gh-pages/"/>
+    
+      <category term="github pages" scheme="https://blog.abel-zhang.com/tags/github-pages/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Revealjs</title>
+    <link href="https://blog.abel-zhang.com/2019/02/21/revealjs/"/>
+    <id>https://blog.abel-zhang.com/2019/02/21/revealjs/</id>
+    <published>2019-02-21T02:11:58.000Z</published>
+    <updated>2020-05-12T08:23:22.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Revealjs 是一个只做 Web 幻灯片的工具。本文分为两部分，一部分为 vscode-reveal，已经足够日常使用。另一部分原生 Revealjs，可以进一步阅读。&lt;/p&gt;
+&lt;h2 id=&quot;vscode-reveal&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="器(tool)" scheme="https://blog.abel-zhang.com/categories/tool/"/>
+    
+    
+      <category term="ppt" scheme="https://blog.abel-zhang.com/tags/ppt/"/>
+    
+      <category term="slides" scheme="https://blog.abel-zhang.com/tags/slides/"/>
+    
+      <category term="reveeal" scheme="https://blog.abel-zhang.com/tags/reveeal/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Web Slides</title>
+    <link href="https://blog.abel-zhang.com/2019/02/19/ppt/"/>
+    <id>https://blog.abel-zhang.com/2019/02/19/ppt/</id>
+    <published>2019-02-19T11:29:26.000Z</published>
+    <updated>2020-05-12T08:23:22.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;PPT&lt;/p&gt;
+&lt;h2 id=&quot;Slides-Online&quot;&gt;&lt;a href=&quot;#Slides-Online&quot; class=&quot;headerlink&quot; title=&quot;Slides Online&quot;&gt;&lt;/a&gt;Slides Online&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="器(tool)" scheme="https://blog.abel-zhang.com/categories/tool/"/>
+    
+    
+      <category term="web" scheme="https://blog.abel-zhang.com/tags/web/"/>
+    
+      <category term="ppt" scheme="https://blog.abel-zhang.com/tags/ppt/"/>
+    
+      <category term="slides" scheme="https://blog.abel-zhang.com/tags/slides/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MkDocs</title>
+    <link href="https://blog.abel-zhang.com/2019/02/18/mkdocs/"/>
+    <id>https://blog.abel-zhang.com/2019/02/18/mkdocs/</id>
+    <published>2019-02-18T10:27:13.000Z</published>
+    <updated>2020-05-12T08:23:22.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;General&quot;&gt;&lt;a href=&quot;#General&quot; class=&quot;headerlink&quot; title=&quot;General&quot;&gt;&lt;/a&gt;General&lt;/h2&gt;&lt;p&gt;Project documentation with
+        
+      
+    
+    </summary>
+    
+      <category term="器(tool)" scheme="https://blog.abel-zhang.com/categories/tool/"/>
+    
+    
+      <category term="github pages" scheme="https://blog.abel-zhang.com/tags/github-pages/"/>
+    
+      <category term="python" scheme="https://blog.abel-zhang.com/tags/python/"/>
+    
+      <category term="mkdocs" scheme="https://blog.abel-zhang.com/tags/mkdocs/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux Command Line</title>
+    <link href="https://blog.abel-zhang.com/2019/01/22/linux-command-line/"/>
+    <id>https://blog.abel-zhang.com/2019/01/22/linux-command-line/</id>
+    <published>2019-01-22T09:48:41.000Z</published>
+    <updated>2020-05-12T08:23:22.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;man&lt;/code&gt;: 查看命令说明&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;export: 显示所有的环境变量&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;echo $VARIABLE_NAME&lt;/code&gt;
+        
+      
+    
+    </summary>
+    
+      <category term="技(tech)" scheme="https://blog.abel-zhang.com/categories/tech/"/>
+    
+    
+      <category term="linux" scheme="https://blog.abel-zhang.com/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MacOS Zsh</title>
+    <link href="https://blog.abel-zhang.com/2019/01/22/mac-zsh/"/>
+    <id>https://blog.abel-zhang.com/2019/01/22/mac-zsh/</id>
+    <published>2019-01-22T08:16:04.000Z</published>
+    <updated>2020-05-12T08:23:22.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;/uploads/2019-01-22-17-37-45.png&quot; alt=&quot;Zsh Layout&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Zsh&quot;&gt;&lt;a href=&quot;#Zsh&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="器(tool)" scheme="https://blog.abel-zhang.com/categories/tool/"/>
+    
+    
+      <category term="terminal" scheme="https://blog.abel-zhang.com/tags/terminal/"/>
+    
+      <category term="shell" scheme="https://blog.abel-zhang.com/tags/shell/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iTerm2</title>
+    <link href="https://blog.abel-zhang.com/2019/01/22/mac-iterm2/"/>
+    <id>https://blog.abel-zhang.com/2019/01/22/mac-iterm2/</id>
+    <published>2019-01-22T02:58:59.000Z</published>
+    <updated>2020-05-12T08:23:22.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;基本内容&quot;&gt;&lt;a href=&quot;#基本内容&quot; class=&quot;headerlink&quot; title=&quot;基本内容&quot;&gt;&lt;/a&gt;基本内容&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;iTerm2 作者意思：Mac 的默认终端 Terminal
+        
+      
+    
+    </summary>
+    
+      <category term="器(tool)" scheme="https://blog.abel-zhang.com/categories/tool/"/>
+    
+    
+      <category term="terminal" scheme="https://blog.abel-zhang.com/tags/terminal/"/>
+    
+      <category term="shell" scheme="https://blog.abel-zhang.com/tags/shell/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Homebrew</title>
+    <link href="https://blog.abel-zhang.com/2019/01/22/mac-homebrew/"/>
+    <id>https://blog.abel-zhang.com/2019/01/22/mac-homebrew/</id>
+    <published>2019-01-22T02:43:59.000Z</published>
+    <updated>2020-05-12T08:23:22.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;The missing package manager for macOS(macOS 缺失的软件包的管理器)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Install Homebrew&lt;br&gt;&lt;code&gt;/usr/bin/ruby -e &amp;quot;$(curl -fsSL
+        
+      
+    
+    </summary>
+    
+      <category term="器(tool)" scheme="https://blog.abel-zhang.com/categories/tool/"/>
+    
+    
+      <category term="homebrew" scheme="https://blog.abel-zhang.com/tags/homebrew/"/>
+    
+      <category term="packge manager" scheme="https://blog.abel-zhang.com/tags/packge-manager/"/>
+    
+  </entry>
+  
+</feed>

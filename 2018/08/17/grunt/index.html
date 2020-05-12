@@ -1,0 +1,1745 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+  <meta name="google-site-verification" content="google4e7da73606bcb837.html">
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="kQOlTBCp68">
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link rel="stylesheet" href="https://fonts.loli.net/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/blog_logo.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/blog_logo.png?v=7.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.2.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Grunt 介绍grunt 是一个基于 nodejs 的 task runner，简单来说，就是类似于.net 平台的 msbuild 以及 java 平台的 maven。  Grunt 中文主页 是一套前端自动化构建工具，一个基于 nodeJs 的命令行工具 它是一个任务运行器, 配合其丰富强大的插件(Grunt 是一个任务插件框架) 常用功能: 合并文件(js/css) 压缩文件(js/css">
+<meta name="keywords" content="grunt,task runner,nodejs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="grunt">
+<meta property="og:url" content="https://blog.abel-zhang.com/2018/08/17/grunt/index.html">
+<meta property="og:site_name" content="Abel&#39;s Blog">
+<meta property="og:description" content="Grunt 介绍grunt 是一个基于 nodejs 的 task runner，简单来说，就是类似于.net 平台的 msbuild 以及 java 平台的 maven。  Grunt 中文主页 是一套前端自动化构建工具，一个基于 nodeJs 的命令行工具 它是一个任务运行器, 配合其丰富强大的插件(Grunt 是一个任务插件框架) 常用功能: 合并文件(js/css) 压缩文件(js/css">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-05-12T08:23:22.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="grunt">
+<meta name="twitter:description" content="Grunt 介绍grunt 是一个基于 nodejs 的 task runner，简单来说，就是类似于.net 平台的 msbuild 以及 java 平台的 maven。  Grunt 中文主页 是一套前端自动化构建工具，一个基于 nodeJs 的命令行工具 它是一个任务运行器, 配合其丰富强大的插件(Grunt 是一个任务插件框架) 常用功能: 合并文件(js/css) 压缩文件(js/css">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Abel's Blog" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="https://blog.abel-zhang.com/2018/08/17/grunt/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>grunt | Abel's Blog</title>
+  
+
+
+
+
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?cb759ec6c06f5496f6c66afe3e4ac6e1";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Abel's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">找一个蚁群，做只蚂蚁</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-commonweal">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/404.html" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>公益 404</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.abel-zhang.com/2018/08/17/grunt/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Abel Zhang">
+      <meta itemprop="description" content="有点较真儿的搬运工">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Abel's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">grunt
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-17 15:33:57" itemprop="dateCreated datePublished" datetime="2018-08-17T15:33:57+08:00">2018-08-17</time>
+            </span>
+          
+
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/tech/" itemprop="url" rel="index"><span itemprop="name">技(tech)</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2018/08/17/grunt/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/08/17/grunt/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+                 阅读次数： 
+                <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+              </span>
+            </span>
+          
+
+          <br>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Grunt-介绍"><a href="#Grunt-介绍" class="headerlink" title="Grunt 介绍"></a>Grunt 介绍</h2><p>grunt 是一个基于 nodejs 的 task runner，简单来说，就是类似于.net 平台的 msbuild 以及 java 平台的 maven。</p>
+<ul>
+<li><a href="http://www.gruntjs.net/" target="_blank" rel="noopener">Grunt 中文主页</a></li>
+<li>是一套前端<code>自动化构建</code>工具，一个基于 nodeJs 的命令行工具</li>
+<li>它是一个任务运行器, 配合其丰富强大的插件(Grunt 是一个任务插件框架)</li>
+<li>常用功能:<ul>
+<li>合并文件(js/css)</li>
+<li>压缩文件(js/css)</li>
+<li>语法检查(js)</li>
+<li>less/sass 预编译处理</li>
+<li>其它…</li>
+</ul>
+</li>
+</ul>
+<p>grunt 可以使你的项目中重复的任务，比如压缩，语法检查，编译（比如 LESS 预处理，coffeescript 编译），单元测试等变得更加简单。</p>
+<p>Project 实例结构:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">|- build----------构建生成的文件所在的文件夹</span><br><span class="line">|- src------------源码文件夹</span><br><span class="line">    |- js---------------js源文件夹</span><br><span class="line">    |- css--------------css源文件夹</span><br><span class="line">|- index.html-----页面文件</span><br><span class="line">|- Gruntfile.js---grunt配置文件(注意首字母大写)</span><br><span class="line">|- package.json---项目包配置文件</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;name&quot;: &quot;grunt_test&quot;,</span><br><span class="line">      &quot;version&quot;: &quot;1.0.0&quot;</span><br><span class="line">      &quot;devDependencies&quot;: &#123;</span><br><span class="line">        &quot;grunt&quot;: &quot;^1.0.3&quot;,</span><br><span class="line">        &quot;grunt-contrib-clean&quot;: &quot;^1.1.0&quot;,</span><br><span class="line">        &quot;grunt-contrib-copy&quot;: &quot;^1.0.0&quot;,</span><br><span class="line">        &quot;grunt-contrib-cssmin&quot;: &quot;^2.2.1&quot;,</span><br><span class="line">        &quot;grunt-contrib-uglify&quot;: &quot;^3.2.1&quot;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Grunt-安装"><a href="#Grunt-安装" class="headerlink" title="Grunt 安装"></a>Grunt 安装</h2><p>因为 grunt 是基于 node.js 的，所以我们首先要安装 node.js 以及 node.js 的包管理工具 npm。</p>
+<ul>
+<li><p>Windows</p>
+<p>Windows 平台下只要在 NODE.JS 官方下载 MSI 安装包，直接安装，node.js 以及 npm 就能直接装好。<br>查看版本:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
+
+<p>全局安装 grunt-cli</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g grunt-cli</span><br></pre></td></tr></table></figure>
+
+<p>安装 grunt</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm init //init package.json</span><br><span class="line">npm install grunt --save-dev</span><br><span class="line"></span><br><span class="line">//批量install</span><br><span class="line">npm install --save-dev grunt-contrib-concat grunt-contrib-jshint grunt-contrib-sass grunt-contrib-uglify grunt-contrib-watch grunt-contrib-connect</span><br></pre></td></tr></table></figure>
+
+<p>运行构建项目命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grunt //Warning: Task "default" not found</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Linux</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get -y install npm</span><br><span class="line">sudo npm install -g grunt</span><br><span class="line">sudo npm install -g grunt-cli</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h2><p>package.json 用来存放项目的元数据，比如项目的版本，项目许可证书——比如 MIT，GPL 啥的，作者，项目依赖的库等：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="attr">"name"</span>: <span class="string">"ui"</span>,</span><br><span class="line">	<span class="attr">"version"</span>: <span class="string">"1.0.0"</span>,</span><br><span class="line">	<span class="attr">"description"</span>: <span class="string">""</span>,</span><br><span class="line">	<span class="attr">"main"</span>: <span class="string">"ui.min.js"</span>,</span><br><span class="line">	<span class="attr">"directories"</span>: &#123;</span><br><span class="line">		<span class="attr">"doc"</span>: <span class="string">"doc"</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">"scripts"</span>: &#123;</span><br><span class="line">		<span class="attr">"test"</span>: <span class="string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">"repository"</span>: <span class="string">""</span>,</span><br><span class="line">	<span class="attr">"keywords"</span>: [<span class="string">"javascript"</span>, <span class="string">"ui"</span>, <span class="string">""</span>],</span><br><span class="line">	<span class="attr">"author"</span>: <span class="string">""</span>,</span><br><span class="line">	<span class="attr">"license"</span>: <span class="string">"BSD"</span>,</span><br><span class="line">	<span class="attr">"devDependencies"</span>: &#123;</span><br><span class="line">		<span class="attr">"grunt"</span>: <span class="string">"~0.4.1"</span>,</span><br><span class="line">		<span class="attr">"grunt-jsdoc"</span>: <span class="string">"~0.4.0"</span>,</span><br><span class="line">		<span class="attr">"grunt-contrib-copy"</span>: <span class="string">"~0.4.1"</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>note: npm init //init package.json</code></p>
+<h2 id="配置文件-Gruntfile-js"><a href="#配置文件-Gruntfile-js" class="headerlink" title="配置文件: Gruntfile.js"></a>配置文件: Gruntfile.js</h2><ul>
+<li><p>此配置文件本质就是一个 node 函数类型模块</p>
+</li>
+<li><p>配置编码包含 3 步:</p>
+<ol>
+<li>初始化插件配置（grunt.initConfig）</li>
+<li>加载插件任务(grunt.loadNpmTasks)</li>
+<li>注册构建任务(grunt.registerTask)</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">smodule.exports = <span class="function"><span class="keyword">function</span>(<span class="params">grunt</span>) </span>&#123;</span><br><span class="line">	grunt.initConfig(&#123;</span><br><span class="line">		<span class="comment">//主要编码处</span></span><br><span class="line">	&#125;);</span><br><span class="line">	grunt.loadNpmTasks(<span class="string">"grunt-contrib-concat"</span>);</span><br><span class="line">	grunt.registerTask(<span class="string">"default"</span>, []);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>命令:</p>
+<p><code>grunt TASK:TARGET</code></p>
+<p><code>grunt</code> = <code>grunt default</code></p>
+</li>
+<li><p><code>Tips</code>：</p>
+<ul>
+<li><p>通过&lt;%%&gt;模板字符串可以引用任何的配置属性, 比如&lt;%=pkg.name%&gt;;也可以运行 grunt api, 比如&lt;%= grunt.template.today(“yyyy-mm-dd”) %&gt;。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">grunt</span>) </span>&#123;</span><br><span class="line">	grunt.initConfig(&#123;</span><br><span class="line">		pkg: grunt.file.readJSON(<span class="string">"package.json"</span>),</span><br><span class="line">		uglify: &#123;</span><br><span class="line">			options: &#123;</span><br><span class="line">				banner:</span><br><span class="line">					<span class="string">'/*! &lt;%= pkg.name %&gt; &lt;%= grunt.template.today("yyyy-mm-dd") %&gt; */\n'</span></span><br><span class="line">			&#125;,</span><br><span class="line">			build: &#123;</span><br><span class="line">				src: <span class="string">"src/&lt;%= pkg.name %&gt;.js"</span>,</span><br><span class="line">				dest: <span class="string">"build/&lt;%= pkg.name %&gt;.min.js"</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;);</span><br><span class="line">	grunt.loadNpmTasks(<span class="string">"grunt-jsdoc"</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Grunt-插件介绍"><a href="#Grunt-插件介绍" class="headerlink" title="Grunt 插件介绍"></a>Grunt 插件介绍</h2><ul>
+<li><a href="http://www.gruntjs.net/plugins" target="_blank" rel="noopener">Grunt 官网的插件列表页面</a></li>
+<li>插件分类:<ul>
+<li>Grunt 团队贡献的插件 : 插件名大都以 contrib-开头<br>e.g. grunt-contrib-clean, grunt-contrib-concat, grunt-contrib-uglify…</li>
+<li>第三方提供的插件 : 大都不以 contrib-开头</li>
+<li>常用的插件:<ul>
+<li>grunt-contrib-clean 清除文件(打包处理生成的)</li>
+<li>grunt-contrib-concat 合并多个文件的代码到一个文件中</li>
+<li>grunt-contrib-uglify 压缩 js 文件</li>
+<li>grunt-contrib-jshint javascript 语法错误检查；</li>
+<li>grunt-contrib-cssmin 压缩/合并 css 文件</li>
+<li>grunt-contrib-htmlmin 压缩 html 文件</li>
+<li>grunt-contrib-imagemin 压缩图片文件(无损)</li>
+<li>grunt-contrib-copy 复制文件、文件夹</li>
+<li>grunt-contrib-requirejs 合并压缩 requirejs 管理的所有 js 模块文件</li>
+<li>grunt-contrib-watch 实时监控文件变化、调用相应的任务重新执行</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="合并-js-使用-concat-插件"><a href="#合并-js-使用-concat-插件" class="headerlink" title="合并 js: 使用 concat 插件"></a>合并 js: 使用 concat 插件</h3><ul>
+<li><p>安装插件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install grunt-contrib-concat --save-dev</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实例编码:</p>
+<ul>
+<li><p>src/js/test1.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">num1, num2</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> num1 + num2;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">console</span>.log(add(<span class="number">10</span>, <span class="number">20</span>));</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>src/js/test2.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> arr = [<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>].map(<span class="function"><span class="keyword">function</span>(<span class="params">item, index</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> item + <span class="number">1</span>;</span><br><span class="line">	&#125;);</span><br><span class="line">	<span class="built_in">console</span>.log(arr);</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>配置: Gruntfile.js</p>
+<ul>
+<li><p>配置任务:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">concat: &#123;</span><br><span class="line">    options: &#123; //可选项配置</span><br><span class="line">        separator: &apos;;&apos;   //使用;连接合并</span><br><span class="line">    &#125;,</span><br><span class="line">    build: &#123; //此名称任意, target的名字，调用的时候为concat：build</span><br><span class="line">        src:  [&quot;src/js/*.js&quot;],  //合并哪些js文件</span><br><span class="line">        dest: &quot;build/js/built.js&quot; //输出的js文件</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>加载插件:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grunt.loadNpmTasks('grunt-contrib-concat');</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>注册任务:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grunt.registerTask('default', ['concat']);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>运行命令:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grunt or grunt default</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="Creating-tasks"><a href="#Creating-tasks" class="headerlink" title="Creating tasks"></a>Creating tasks</h2><ul>
+<li><p>Alias Tasks</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">grunt.registerTask(taskName, [description, ] taskList)</span><br><span class="line"></span><br><span class="line"><span class="comment">//e.g.</span></span><br><span class="line">grunt.registerTask(<span class="string">'default'</span>, [<span class="string">'jshint'</span>, <span class="string">'qunit'</span>, <span class="string">'concat'</span>, <span class="string">'uglify'</span>]);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Multi Tasks</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">grunt.registerMultiTask(taskName, [description, ] taskFunction)</span><br><span class="line"></span><br><span class="line"><span class="comment">//e.g.</span></span><br><span class="line">grunt.initConfig(&#123;</span><br><span class="line">log: &#123;</span><br><span class="line">    foo: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],</span><br><span class="line">    bar: <span class="string">'hello world'</span>,</span><br><span class="line">    baz: <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">grunt.registerMultiTask(<span class="string">'log'</span>, <span class="string">'Log stuff.'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">grunt.log.writeln(<span class="keyword">this</span>.target + <span class="string">': '</span> + <span class="keyword">this</span>.data);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>“Basic” Tasks</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">grunt.registerTask(taskName, [description, ] taskFunction)</span><br><span class="line"></span><br><span class="line"><span class="comment">//e.g.</span></span><br><span class="line">grunt.registerTask(<span class="string">'foo'</span>, <span class="string">'A sample task that logs stuff.'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">arg1, arg2</span>) </span>&#123;</span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">arguments</span>.length === <span class="number">0</span>) &#123;</span><br><span class="line">    grunt.log.writeln(<span class="keyword">this</span>.name + <span class="string">", no args"</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    grunt.log.writeln(<span class="keyword">this</span>.name + <span class="string">", "</span> + arg1 + <span class="string">" "</span> + arg2);</span><br><span class="line">&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><code>note:</code> Inside a task, you can run other tasks.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">grunt.registerTask(<span class="string">"foo"</span>, <span class="string">'My "foo" task.'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="comment">// Enqueue "bar" and "baz" tasks, to run after "foo" finishes, in-order.</span></span><br><span class="line">	grunt.task.run(<span class="string">"bar"</span>, <span class="string">"baz"</span>);</span><br><span class="line">	<span class="comment">// Or:</span></span><br><span class="line">	grunt.task.run([<span class="string">"bar"</span>, <span class="string">"baz"</span>]);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="快速搭建脚手架"><a href="#快速搭建脚手架" class="headerlink" title="快速搭建脚手架"></a>快速搭建脚手架</h2><p>利用 grunt 快速搭建脚手架出来。所谓的脚手架，就是指包含了目录结构和初始的一些功能,测试文件的一个环境。我们来搭建一个 jquery 插件的脚手架：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grunt init:jquery</span><br></pre></td></tr></table></figure>
+
+<p>测试：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">grunt qunit</span><br><span class="line">grunt lint</span><br><span class="line">grunt watch</span><br></pre></td></tr></table></figure>
+
+<h2 id="Grunt-的设计原理个人理解"><a href="#Grunt-的设计原理个人理解" class="headerlink" title="Grunt 的设计原理个人理解"></a>Grunt 的设计原理个人理解</h2><p>Grunt 其实就是一个 singleton 的对象。框架提供了 task 注册和运行的功能。像项目管理一样，收集任务，编排任务，并规定执行顺序。</p>
+<ul>
+<li><p><code>grunt.initConfig</code> 是全局设置，配置 task 的执行参数或 context。</p>
+<p>使用&lt;% %&gt;分隔符指定的模板会在任务从它们的配置中读取相应的数据时将自动扩展扫描。模板会被递归的展开，直到配置中不再存在遗留的模板相关的信息(与模板匹配的)。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">grunt.initConfig(&#123;</span><br><span class="line">	pkg: grunt.file.readJSON(<span class="string">"package.json"</span>),</span><br><span class="line">	uglify: &#123;</span><br><span class="line">		options: &#123;</span><br><span class="line">			banner:</span><br><span class="line">				<span class="string">'/*! &lt;%= pkg.name %&gt; &lt;%= grunt.template.today("yyyy-mm-dd") %&gt; */\n'</span></span><br><span class="line">		&#125;,</span><br><span class="line">		dist: &#123;</span><br><span class="line">			src: <span class="string">"src/&lt;%= pkg.name %&gt;.js"</span>,</span><br><span class="line">			dest: <span class="string">"dist/&lt;%= pkg.name %&gt;.min.js"</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>全局 Grunt 注册 task 信息。</p>
+<ul>
+<li><p><code>grunt.loadTasks(&#39;tasks&#39;)</code>, ‘tasks’是文件夹名，通过 node module 批量注册任务。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">"use strict"</span>;</span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">grunt</span>) </span>&#123;</span><br><span class="line">	grunt.initConfig(&#123;&#125;);</span><br><span class="line">	grunt.registerTask(<span class="string">"test"</span>, [<span class="string">"clean"</span>, <span class="string">"ui5_build"</span>, <span class="string">"nodeunit"</span>]);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>node module 中 通过 API <code>grunt.registerTask</code> or <code>registerMultiTask</code>, 注册 task 信息。</li>
+</ul>
+</li>
+<li><p><code>grunt.loadNpmTasks</code>, 加载注册 grunt plugin，别人设计的 task。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Grunt-plugin"><a href="#Grunt-plugin" class="headerlink" title="Grunt plugin"></a><a href="https://www.gruntjs.net/creating-plugins" target="_blank" rel="noopener">Grunt plugin</a></h2><p>利用 Grunt 脚手架，快速创建贴合自己需要的项目需要的，项目内部可重用的 plugin。d<br>参考<a href="https://www.gruntjs.net/project-scaffolding" target="_blank" rel="noopener">Grunt 项目脚手架</a></p>
+<ul>
+<li>采用模板 <a href="https://github.com/gruntjs/grunt-init-gruntplugin" target="_blank" rel="noopener">grunt-init-gruntplugin</a> - Create a Grunt plugin, including Nodeunit unit tests</li>
+<li><a href="https://github.com/gruntjs/grunt-init-gruntplugin-sample/tree/generated" target="_blank" rel="noopener">grunt-init-gruntplugin-sample</a></li>
+</ul>
+<h2 id="Debug-Grunt-in-VSCode"><a href="#Debug-Grunt-in-VSCode" class="headerlink" title="Debug Grunt in VSCode"></a>Debug Grunt in VSCode</h2><p>VSCode 基于 NodeJS 构建，天生支持 JS 的调试，而 Grunt 又是 js 的，所以，可以调试。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	// Use IntelliSense to learn about possible attributes.</span><br><span class="line">	// Hover to view descriptions of existing attributes.</span><br><span class="line">	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387</span><br><span class="line">	"version": "0.2.0",</span><br><span class="line">	"configurations": [</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="attr">"type"</span>: <span class="string">"node"</span>,</span><br><span class="line">			<span class="attr">"request"</span>: <span class="string">"launch"</span>,</span><br><span class="line">			<span class="attr">"name"</span>: <span class="string">"Launch Grunt"</span>,</span><br><span class="line">			// "program": "$&#123;workspaceFolder&#125;\\node_modules\\@sap\\approuter\\approuter.js"</span><br><span class="line">			"program": "$&#123;env:APPDATA&#125;\\npm\\node_modules\\grunt-cli\\bin\\grunt",</span><br><span class="line">			"args": ["testBuild"],</span><br><span class="line">			"stopOnEntry": true,</span><br><span class="line">			"cwd": "$&#123;workspaceRoot&#125;"</span><br><span class="line">		&#125;</span><br><span class="line">	]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>感谢支持，让我安静的做蚂蚁梦！</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/uploads/wechatpay.jpg" alt="Abel Zhang 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/uploads/alipay.jpg" alt="Abel Zhang 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/grunt/" rel="tag"># grunt</a>
+          
+            <a href="/tags/task-runner/" rel="tag"># task runner</a>
+          
+            <a href="/tags/nodejs/" rel="tag"># nodejs</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/07/nodejs-script/" rel="next" title="Nodejs Script">
+                <i class="fa fa-chevron-left"></i> Nodejs Script
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/21/docker/" rel="prev" title="Docker">
+                Docker <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/avatar.jpeg" alt="Abel Zhang">
+            
+              <p class="site-author-name" itemprop="name">Abel Zhang</p>
+              <div class="site-description motion-element" itemprop="description">有点较真儿的搬运工</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">36</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">39</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/zdlcloud" title="GitHub &rarr; https://github.com/zdlcloud" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:abel.zhang@sap.com" title="E-Mail &rarr; mailto:abel.zhang@sap.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.google.com/webmasters/tools/home?hl=zh" title="https://www.google.com/webmasters/tools/home?hl=zh" rel="noopener" target="_blank">Google Webmasters</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://ziyuan.baidu.com/site/index" title="https://ziyuan.baidu.com/site/index" rel="noopener" target="_blank">百度站点管理</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://analytics.google.com/analytics/web" title="https://analytics.google.com/analytics/web" rel="noopener" target="_blank">Google Analytics</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://tongji.baidu.com/web/homepage/index" title="https://tongji.baidu.com/web/homepage/index" rel="noopener" target="_blank">百度统计</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Grunt-介绍"><span class="nav-number">1.</span> <span class="nav-text">Grunt 介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Grunt-安装"><span class="nav-number">2.</span> <span class="nav-text">Grunt 安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#package-json"><span class="nav-number">3.</span> <span class="nav-text">package.json</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置文件-Gruntfile-js"><span class="nav-number">4.</span> <span class="nav-text">配置文件: Gruntfile.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Grunt-插件介绍"><span class="nav-number">5.</span> <span class="nav-text">Grunt 插件介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#合并-js-使用-concat-插件"><span class="nav-number">5.1.</span> <span class="nav-text">合并 js: 使用 concat 插件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Creating-tasks"><span class="nav-number">6.</span> <span class="nav-text">Creating tasks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#快速搭建脚手架"><span class="nav-number">7.</span> <span class="nav-text">快速搭建脚手架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Grunt-的设计原理个人理解"><span class="nav-number">8.</span> <span class="nav-text">Grunt 的设计原理个人理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Grunt-plugin"><span class="nav-number">9.</span> <span class="nav-text">Grunt plugin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Debug-Grunt-in-VSCode"><span class="nav-number">10.</span> <span class="nav-text">Debug Grunt in VSCode</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Abel Zhang</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/three/three.min.js"></script>
+
+  
+  <script src="/lib/three/canvas_lines.min.js"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.2.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.2.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://abel-1.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://blog.abel-zhang.com/2018/08/17/grunt/";
+    this.page.identifier = "2018/08/17/grunt/";
+    this.page.title = 'grunt';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://abel-1.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    $(function() {
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        window.addEventListener('load', loadComments, false);
+      } else {
+        $(window).on('scroll.disqus_scroll', function() {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('.disqus_scroll');
+            loadComments();
+          }
+        });
+      }
+    });
+  
+</script>
+
+
+
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+<script>
+  $('.highlight').not('.gist .highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      const selection = document.getSelection();
+      const selected = selection.rangeCount > 0 ? selection.getRangeAt(0) : false;
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+      if (selected) {
+        selection.removeAllRanges();
+        selection.addRange(selected);
+      }
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('复制');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
+
+  
+
+  
+
+</body>
+</html>

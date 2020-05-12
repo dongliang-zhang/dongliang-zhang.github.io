@@ -1,0 +1,1648 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+  <meta name="google-site-verification" content="google4e7da73606bcb837.html">
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="kQOlTBCp68">
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link rel="stylesheet" href="https://fonts.loli.net/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/blog_logo.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/blog_logo.png?v=7.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.2.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Revealjs 是一个只做 Web 幻灯片的工具。本文分为两部分，一部分为 vscode-reveal，已经足够日常使用。另一部分原生 Revealjs，可以进一步阅读。 vscode-revealVSCode extension evilz.vscode-reveal简化了 Revealjs(说简化可能不准确，但是从 vscode-reveal 了解起来轻松很多)，只需要一个 md 文件就可以">
+<meta name="keywords" content="ppt,slides,reveeal">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Revealjs">
+<meta property="og:url" content="https://blog.abel-zhang.com/2019/02/21/revealjs/index.html">
+<meta property="og:site_name" content="Abel&#39;s Blog">
+<meta property="og:description" content="Revealjs 是一个只做 Web 幻灯片的工具。本文分为两部分，一部分为 vscode-reveal，已经足够日常使用。另一部分原生 Revealjs，可以进一步阅读。 vscode-revealVSCode extension evilz.vscode-reveal简化了 Revealjs(说简化可能不准确，但是从 vscode-reveal 了解起来轻松很多)，只需要一个 md 文件就可以">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-05-12T08:23:22.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Revealjs">
+<meta name="twitter:description" content="Revealjs 是一个只做 Web 幻灯片的工具。本文分为两部分，一部分为 vscode-reveal，已经足够日常使用。另一部分原生 Revealjs，可以进一步阅读。 vscode-revealVSCode extension evilz.vscode-reveal简化了 Revealjs(说简化可能不准确，但是从 vscode-reveal 了解起来轻松很多)，只需要一个 md 文件就可以">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Abel's Blog" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="https://blog.abel-zhang.com/2019/02/21/revealjs/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Revealjs | Abel's Blog</title>
+  
+
+
+
+
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?cb759ec6c06f5496f6c66afe3e4ac6e1";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Abel's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">找一个蚁群，做只蚂蚁</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-commonweal">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/404.html" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>公益 404</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.abel-zhang.com/2019/02/21/revealjs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Abel Zhang">
+      <meta itemprop="description" content="有点较真儿的搬运工">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Abel's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Revealjs
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-02-21 10:11:58" itemprop="dateCreated datePublished" datetime="2019-02-21T10:11:58+08:00">2019-02-21</time>
+            </span>
+          
+
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/tool/" itemprop="url" rel="index"><span itemprop="name">器(tool)</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/02/21/revealjs/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/02/21/revealjs/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+                 阅读次数： 
+                <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+              </span>
+            </span>
+          
+
+          <br>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Revealjs 是一个只做 Web 幻灯片的工具。本文分为两部分，一部分为 vscode-reveal，已经足够日常使用。另一部分原生 Revealjs，可以进一步阅读。</p>
+<h2 id="vscode-reveal"><a href="#vscode-reveal" class="headerlink" title="vscode-reveal"></a>vscode-reveal</h2><p>VSCode extension <code>evilz.vscode-reveal</code>简化了 Revealjs(说简化可能不准确，但是从 vscode-reveal 了解起来轻松很多)，只需要一个 md 文件就可以生成一个 slides。</p>
+<p>See <a href="https://github.wdf.sap.corp/pages/dongliang-zhang/revealjs-template" target="_blank" rel="noopener">my revealjs-template</a> for live demo/guide.</p>
+<ul>
+<li><strong>VSCode Extension</strong>: <a href="https://github.com/evilz/vscode-reveal" target="_blank" rel="noopener">https://github.com/evilz/vscode-reveal</a><ul>
+<li><a href="https://raw.githubusercontent.com/evilz/vscode-reveal/master/sample.md" target="_blank" rel="noopener">Sample</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h3><ul>
+<li>Slides can be nested inside of each other as <code>Vertical Slides</code>. Use the <strong>Space</strong> key to navigate through all slides.</li>
+<li>Press <strong>ESC</strong> to enter the slide overview.</li>
+<li><strong>Alt + Click</strong>: Zoom in. Repeat to zoom back out.</li>
+<li>Press the <strong>S</strong> key to show speaker view. It includes a timer, preview of the upcoming slide as well as your speaker notes.</li>
+<li>Press <strong>.</strong> on your keyboard to pause the presentation.</li>
+<li>Press <strong>B</strong> or click on the pencil button to open and close your chalkboard.<ul>
+<li>Click the left mouse button to write on the chalkboard</li>
+<li>Click the right mouse button to wipe the chalkboard</li>
+<li>Click the <strong>DEL</strong> key to clear the chalkboard, for MacOS, <strong>fn + del</strong></li>
+</ul>
+</li>
+<li>By pressing <strong>C</strong> or clicking the button you can start and stop the notes taking mode allowing you to write comments and notes directly on the slide.<ul>
+<li>Click the left mouse button to write on the chalkboard</li>
+<li>Click the right mouse button to wipe the chalkboard</li>
+<li>Click the <strong>DEL</strong> key to clear the chalkboard, for MacOS, <strong>fn + del</strong></li>
+</ul>
+</li>
+<li>Press <strong>M</strong> to open or close the menu.</li>
+<li><strong>CTRL + SHIFT + F</strong> handles finding a text string anywhere in the slides.</li>
+</ul>
+<h2 id="Revealjs"><a href="#Revealjs" class="headerlink" title="Revealjs"></a>Revealjs</h2><h3 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a><a href="https://github.com/hakimel/reveal.js#installation" target="_blank" rel="noopener">Installation</a></h3><ol>
+<li>Download the latest version of reveal.js from <a href="https://github.com/hakimel/reveal.js/releases" target="_blank" rel="noopener">https://github.com/hakimel/reveal.js/releases</a></li>
+<li>Unzip and replace the example contents in index.html with your own</li>
+<li>Open index.html in a browser to view it</li>
+</ol>
+<p><strong>Folder Structure</strong>:</p>
+<ul>
+<li>css/ Core styles without which the project does not function</li>
+<li>js/ Like above but for JavaScript</li>
+<li>plugin/ Components that have been developed as extensions to reveal.js</li>
+<li>lib/ All other third party assets (JavaScript, CSS, fonts)</li>
+</ul>
+<h3 id="Instructions"><a href="#Instructions" class="headerlink" title="Instructions"></a><a href="https://github.com/hakimel/reveal.js#instructions" target="_blank" rel="noopener">Instructions</a></h3><h4 id="Markup"><a href="#Markup" class="headerlink" title="Markup"></a>Markup</h4><p>Here’s a barebones example of a fully working reveal.js presentation:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"css/reveal.css"</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"css/theme/white.css"</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"reveal"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"slides"</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">section</span>&gt;</span>Slide 1<span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">section</span>&gt;</span>Slide 2<span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/reveal.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line">			Reveal.initialize();</span><br><span class="line">		<span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>The presentation markup hierarchy needs to be <code>.reveal &gt; .slides &gt; section</code> where the <code>section</code> represents one slide and can be repeated indefinitely. If you place multiple <code>section</code> elements inside of another <code>section</code> they will be shown as vertical slides. The first of the vertical slides is the “root” of the others (at the top), and will be included in the horizontal sequence. For example:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"reveal"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"slides"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">section</span>&gt;</span>Single Horizontal Slide<span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">section</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">section</span>&gt;</span>Vertical Slide 1<span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">section</span>&gt;</span>Vertical Slide 2<span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Markdown"><a href="#Markdown" class="headerlink" title="Markdown"></a>Markdown</h4><p>It’s possible to write your slides using Markdown. To enable Markdown, add the <code>data-markdown</code> attribute to your <code>&lt;section&gt;</code> elements and wrap the contents in a <code>&lt;textarea data-template&gt;</code> like the example below. You’ll also need to add the <code>plugin/markdown/marked.js</code> and <code>plugin/markdown/markdown.js</code> scripts (in that order) to your HTML file.</p>
+<p>This is based on <a href="https://gist.github.com/1343518" target="_blank" rel="noopener">data-markdown</a> from <a href="https://github.com/paulirish" target="_blank" rel="noopener">Paul Irish</a> modified to use <a href="https://github.com/chjj/marked" target="_blank" rel="noopener">marked</a> to support <a href="https://help.github.com/articles/github-flavored-markdown" target="_blank" rel="noopener">GitHub Flavored Markdown</a>. Sensitive to indentation (avoid mixing tabs and spaces) and line breaks (avoid consecutive breaks).</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">section</span> <span class="attr">data-markdown</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">textarea</span> <span class="attr">data-template</span>&gt;</span></span><br><span class="line">		## Page title</span><br><span class="line"></span><br><span class="line">		A paragraph with some text and a [link](http://hakim.se).</span><br><span class="line">	<span class="tag">&lt;/<span class="name">textarea</span></span></span><br><span class="line"><span class="tag">	&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="External-Markdown"><a href="#External-Markdown" class="headerlink" title="External Markdown"></a>External Markdown</h4><p>You can write your content as a separate file and have reveal.js load it at runtime. Note the separator arguments which determine how slides are delimited in the external file: the <code>data-separator</code> attribute defines a regular expression for horizontal slides (defaults to <code>^\r?\n---\r?\n$</code>, a newline-bounded horizontal rule) and <code>data-separator-vertical</code> defines vertical slides (disabled by default). The <code>data-separator-notes</code> attribute is a regular expression for specifying the beginning of the current slide’s speaker notes (defaults to <code>notes?:</code>, so it will match both “note:” and “notes:”). The <code>data-charset</code> attribute is optional and specifies which charset to use when loading the external file.</p>
+<p>When used locally, this feature requires that reveal.js <a href="#full-setup">runs from a local web server</a>. The following example customises all available options:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">section</span></span></span><br><span class="line"><span class="tag">	<span class="attr">data-markdown</span>=<span class="string">"example.md"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">data-separator</span>=<span class="string">"^\n\n\n"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">data-separator-vertical</span>=<span class="string">"^\n\n"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">data-separator-notes</span>=<span class="string">"^Note:"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">data-charset</span>=<span class="string">"iso-8859-15"</span></span></span><br><span class="line"><span class="tag">&gt;</span></span><br><span class="line">	<span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">        Note that Windows uses `\r\n` instead of `\n` as its linefeed character.</span></span><br><span class="line"><span class="comment">        For a regex that supports all operating systems, use `\r?\n` instead of `\n`.</span></span><br><span class="line"><span class="comment">    --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Element-Attributes"><a href="#Element-Attributes" class="headerlink" title="Element Attributes"></a>Element Attributes</h4><p>Special syntax (through HTML comments) is available for adding attributes to Markdown elements. This is useful for fragments, amongst other things.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">section</span> <span class="attr">data-markdown</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/template"</span>&gt;</span></span><br><span class="line"><span class="xml">		- Item 1 <span class="comment">&lt;!-- .element: class="fragment" data-fragment-index="2" --&gt;</span></span></span><br><span class="line"><span class="xml">		- Item 2 <span class="comment">&lt;!-- .element: class="fragment" data-fragment-index="1" --&gt;</span></span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Slide-Attributes"><a href="#Slide-Attributes" class="headerlink" title="Slide Attributes"></a>Slide Attributes</h4><p>Special syntax (through HTML comments) is available for adding attributes to the slide <code>&lt;section&gt;</code> elements generated by your Markdown.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">section</span> <span class="attr">data-markdown</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/template"</span>&gt;</span></span><br><span class="line"><span class="xml">		<span class="comment">&lt;!-- .slide: data-background="#ff0000" --&gt;</span></span></span><br><span class="line">			Markdown content</span><br><span class="line">	<span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Configuring-marked"><a href="#Configuring-marked" class="headerlink" title="Configuring marked"></a>Configuring <em>marked</em></h4><p>We use <a href="https://github.com/chjj/marked" target="_blank" rel="noopener">marked</a> to parse Markdown. To customise marked’s rendering, you can pass in options when <a href="#configuration">configuring Reveal</a>:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Reveal.initialize(&#123;</span><br><span class="line">	<span class="comment">// Options which are passed into marked</span></span><br><span class="line">	<span class="comment">// See https://github.com/chjj/marked#options-1</span></span><br><span class="line">	markdown: &#123;</span><br><span class="line">		smartypants: <span class="literal">true</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Configuration"><a href="#Configuration" class="headerlink" title="Configuration"></a><a href="https://github.com/hakimel/reveal.js#configuration" target="_blank" rel="noopener">Configuration</a></h3><p>At the end of your page you need to initialize reveal by running the following code. Note that all configuration values are optional and will default to the values specified below.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br></pre></td><td class="code"><pre><span class="line">Reveal.initialize(&#123;</span><br><span class="line">	<span class="comment">// Display presentation control arrows</span></span><br><span class="line">	controls: <span class="literal">true</span>,</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Help the user learn the controls by providing hints, for example by</span></span><br><span class="line">	<span class="comment">// bouncing the down arrow when they first encounter a vertical slide</span></span><br><span class="line">	controlsTutorial: <span class="literal">true</span>,</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Determines where controls appear, "edges" or "bottom-right"</span></span><br><span class="line">	controlsLayout: <span class="string">"bottom-right"</span>,</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Visibility rule for backwards navigation arrows; "faded", "hidden"</span></span><br><span class="line">	<span class="comment">// or "visible"</span></span><br><span class="line">	controlsBackArrows: <span class="string">"faded"</span>,</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Display a presentation progress bar</span></span><br><span class="line">	progress: <span class="literal">true</span>,</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Display the page number of the current slide</span></span><br><span class="line">	slideNumber: <span class="literal">false</span>,</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Push each slide change to the browser history</span></span><br><span class="line">	history: <span class="literal">false</span>,</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Enable keyboard shortcuts for navigation</span></span><br><span class="line">	keyboard: <span class="literal">true</span>,</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Enable the slide overview mode</span></span><br><span class="line">	overview: <span class="literal">true</span>,</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Vertical centering of slides</span></span><br><span class="line">	center: <span class="literal">true</span>,</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Enables touch navigation on devices with touch input</span></span><br><span class="line">	touch: <span class="literal">true</span>,</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Loop the presentation</span></span><br><span class="line">	loop: <span class="literal">false</span>,</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Change the presentation direction to be RTL</span></span><br><span class="line">	rtl: <span class="literal">false</span>,</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Randomizes the order of slides each time the presentation loads</span></span><br><span class="line">	shuffle: <span class="literal">false</span>,</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Turns fragments on and off globally</span></span><br><span class="line">	fragments: <span class="literal">true</span>,</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Flags whether to include the current fragment in the URL,</span></span><br><span class="line">	<span class="comment">// so that reloading brings you to the same fragment position</span></span><br><span class="line">	fragmentInURL: <span class="literal">false</span>,</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Flags if the presentation is running in an embedded mode,</span></span><br><span class="line">	<span class="comment">// i.e. contained within a limited portion of the screen</span></span><br><span class="line">	embedded: <span class="literal">false</span>,</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Flags if we should show a help overlay when the questionmark</span></span><br><span class="line">	<span class="comment">// key is pressed</span></span><br><span class="line">	help: <span class="literal">true</span>,</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Flags if speaker notes should be visible to all viewers</span></span><br><span class="line">	showNotes: <span class="literal">false</span>,</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Global override for autoplaying embedded media (video/audio/iframe)</span></span><br><span class="line">	<span class="comment">// - null: Media will only autoplay if data-autoplay is present</span></span><br><span class="line">	<span class="comment">// - true: All media will autoplay, regardless of individual setting</span></span><br><span class="line">	<span class="comment">// - false: No media will autoplay, regardless of individual setting</span></span><br><span class="line">	autoPlayMedia: <span class="literal">null</span>,</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Number of milliseconds between automatically proceeding to the</span></span><br><span class="line">	<span class="comment">// next slide, disabled when set to 0, this value can be overwritten</span></span><br><span class="line">	<span class="comment">// by using a data-autoslide attribute on your slides</span></span><br><span class="line">	autoSlide: <span class="number">0</span>,</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Stop auto-sliding after user input</span></span><br><span class="line">	autoSlideStoppable: <span class="literal">true</span>,</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Use this method for navigation when auto-sliding</span></span><br><span class="line">	autoSlideMethod: Reveal.navigateNext,</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Specify the average time in seconds that you think you will spend</span></span><br><span class="line">	<span class="comment">// presenting each slide. This is used to show a pacing timer in the</span></span><br><span class="line">	<span class="comment">// speaker view</span></span><br><span class="line">	defaultTiming: <span class="number">120</span>,</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Enable slide navigation via mouse wheel</span></span><br><span class="line">	mouseWheel: <span class="literal">false</span>,</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Hides the address bar on mobile devices</span></span><br><span class="line">	hideAddressBar: <span class="literal">true</span>,</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Opens links in an iframe preview overlay</span></span><br><span class="line">	<span class="comment">// Add `data-preview-link` and `data-preview-link="false"` to customise each link</span></span><br><span class="line">	<span class="comment">// individually</span></span><br><span class="line">	previewLinks: <span class="literal">false</span>,</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Transition style</span></span><br><span class="line">	transition: <span class="string">"slide"</span>, <span class="comment">// none/fade/slide/convex/concave/zoom</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// Transition speed</span></span><br><span class="line">	transitionSpeed: <span class="string">"default"</span>, <span class="comment">// default/fast/slow</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// Transition style for full page slide backgrounds</span></span><br><span class="line">	backgroundTransition: <span class="string">"fade"</span>, <span class="comment">// none/fade/slide/convex/concave/zoom</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// Number of slides away from the current that are visible</span></span><br><span class="line">	viewDistance: <span class="number">3</span>,</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Parallax background image</span></span><br><span class="line">	parallaxBackgroundImage: <span class="string">""</span>, <span class="comment">// e.g. "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'"</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// Parallax background size</span></span><br><span class="line">	parallaxBackgroundSize: <span class="string">""</span>, <span class="comment">// CSS syntax, e.g. "2100px 900px"</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// Number of pixels to move the parallax background per slide</span></span><br><span class="line">	<span class="comment">// - Calculated automatically unless specified</span></span><br><span class="line">	<span class="comment">// - Set to 0 to disable movement along an axis</span></span><br><span class="line">	parallaxBackgroundHorizontal: <span class="literal">null</span>,</span><br><span class="line">	parallaxBackgroundVertical: <span class="literal">null</span>,</span><br><span class="line"></span><br><span class="line">	<span class="comment">// The display mode that will be used to show slides</span></span><br><span class="line">	display: <span class="string">"block"</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>The configuration can be updated after initialization using the <code>configure</code> method:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Turn autoSlide off</span></span><br><span class="line">Reveal.configure(&#123; <span class="attr">autoSlide</span>: <span class="number">0</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Start auto-sliding every 5s</span></span><br><span class="line">Reveal.configure(&#123; <span class="attr">autoSlide</span>: <span class="number">5000</span> &#125;);</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>感谢支持，让我安静的做蚂蚁梦！</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/uploads/wechatpay.jpg" alt="Abel Zhang 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/uploads/alipay.jpg" alt="Abel Zhang 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/ppt/" rel="tag"># ppt</a>
+          
+            <a href="/tags/slides/" rel="tag"># slides</a>
+          
+            <a href="/tags/reveeal/" rel="tag"># reveeal</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/19/ppt/" rel="next" title="Web Slides">
+                <i class="fa fa-chevron-left"></i> Web Slides
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/21/gh-pages-deployment/" rel="prev" title="gh-pages Deployment">
+                gh-pages Deployment <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/avatar.jpeg" alt="Abel Zhang">
+            
+              <p class="site-author-name" itemprop="name">Abel Zhang</p>
+              <div class="site-description motion-element" itemprop="description">有点较真儿的搬运工</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">36</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">39</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/zdlcloud" title="GitHub &rarr; https://github.com/zdlcloud" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:abel.zhang@sap.com" title="E-Mail &rarr; mailto:abel.zhang@sap.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.google.com/webmasters/tools/home?hl=zh" title="https://www.google.com/webmasters/tools/home?hl=zh" rel="noopener" target="_blank">Google Webmasters</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://ziyuan.baidu.com/site/index" title="https://ziyuan.baidu.com/site/index" rel="noopener" target="_blank">百度站点管理</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://analytics.google.com/analytics/web" title="https://analytics.google.com/analytics/web" rel="noopener" target="_blank">Google Analytics</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://tongji.baidu.com/web/homepage/index" title="https://tongji.baidu.com/web/homepage/index" rel="noopener" target="_blank">百度统计</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#vscode-reveal"><span class="nav-number">1.</span> <span class="nav-text">vscode-reveal</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Tips"><span class="nav-number">1.1.</span> <span class="nav-text">Tips</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Revealjs"><span class="nav-number">2.</span> <span class="nav-text">Revealjs</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Installation"><span class="nav-number">2.1.</span> <span class="nav-text">Installation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Instructions"><span class="nav-number">2.2.</span> <span class="nav-text">Instructions</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Markup"><span class="nav-number">2.2.1.</span> <span class="nav-text">Markup</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Markdown"><span class="nav-number">2.2.2.</span> <span class="nav-text">Markdown</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#External-Markdown"><span class="nav-number">2.2.3.</span> <span class="nav-text">External Markdown</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Element-Attributes"><span class="nav-number">2.2.4.</span> <span class="nav-text">Element Attributes</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Slide-Attributes"><span class="nav-number">2.2.5.</span> <span class="nav-text">Slide Attributes</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Configuring-marked"><span class="nav-number">2.2.6.</span> <span class="nav-text">Configuring marked</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Configuration"><span class="nav-number">2.3.</span> <span class="nav-text">Configuration</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Abel Zhang</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/three/three.min.js"></script>
+
+  
+  <script src="/lib/three/canvas_lines.min.js"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.2.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.2.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://abel-1.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://blog.abel-zhang.com/2019/02/21/revealjs/";
+    this.page.identifier = "2019/02/21/revealjs/";
+    this.page.title = 'Revealjs';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://abel-1.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    $(function() {
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        window.addEventListener('load', loadComments, false);
+      } else {
+        $(window).on('scroll.disqus_scroll', function() {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('.disqus_scroll');
+            loadComments();
+          }
+        });
+      }
+    });
+  
+</script>
+
+
+
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+<script>
+  $('.highlight').not('.gist .highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      const selection = document.getSelection();
+      const selected = selection.rangeCount > 0 ? selection.getRangeAt(0) : false;
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+      if (selected) {
+        selection.removeAllRanges();
+        selection.addRange(selected);
+      }
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('复制');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
+
+  
+
+  
+
+</body>
+</html>
